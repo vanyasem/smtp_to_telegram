@@ -291,6 +291,9 @@ func SendEmailToTelegram(e *mail.Envelope,
 	if err != nil {
 		return err
 	}
+	if !strings.Contains(message.text, "kino.pub") {
+		return nil
+	}
 
 	client := http.Client{
 		Timeout: time.Duration(telegramConfig.telegramApiTimeoutSeconds*1000) * time.Millisecond,
